@@ -23,4 +23,12 @@ class ScrabbleTest < Minitest::Test
 
     assert_equal 8, scrabble.score("hello")
   end
+
+  def test_multiplier_can_score_word
+    scrabble = Scrabble.new
+binding.pry
+    assert_equal 8, scrabble.score_with_multipliers("hello")
+  end
+
+
 end

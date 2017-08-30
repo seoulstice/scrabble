@@ -24,12 +24,26 @@ class Scrabble
     else
       upcased = word.upcase
       split_word = upcased.split(//)
-      split_word.map do |letter|
+      split_word.each do |letter|
         score << @point_values[letter]
       end
       return score.inject(:+)
     end
   end
 
-  
+  def score_with_multipliers(word, double_letter = [], word_multiplier = 0)
+    score = []
+    if word == ""
+      return 0
+    elsif word.nil?
+      return 0
+    else
+      upcased = word.upcase
+      split_word = upcased.split(//)
+      split_word.each do |letter|
+        score << @point_values[letter]
+      end
+      total = double_letter.zip(score.map{|x, y| x * y} * word_multiplier
+    end
+  end
 end
