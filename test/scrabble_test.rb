@@ -30,7 +30,13 @@ class ScrabbleTest < Minitest::Test
     assert_equal 9, scrabble.score_with_multipliers("hello", [1,2,1,1,1])
   end
 
-  
+  def test_multiplier_can_score_word_with_multiplier_and_double_letter
+    scrabble = Scrabble.new
+
+    assert_equal 18, scrabble.score_with_multipliers("hello", [1,2,1,1,1], 2)
+  end
+
+
 
 
 end

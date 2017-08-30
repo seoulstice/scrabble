@@ -43,8 +43,8 @@ class Scrabble
       score = split_word.map do |letter|
         @point_values[letter]
       end
-      total_score = score.zip(double_letter).map { |x, y| x * y } * word_multiplier
+      total_score = score.zip(double_letter).map { |x, y| x * y }
     end
-    total_score.inject(:+)
+    total_score.inject(:+) * word_multiplier
   end
 end
