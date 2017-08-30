@@ -31,8 +31,8 @@ class Scrabble
     end
   end
 
-  def score_with_multipliers(word, double_letter = [], word_multiplier = 0)
-    score = []
+  def score_with_multipliers(word, double_letter, word_multiplier = 1)
+
     if word == ""
       return 0
     elsif word.nil?
@@ -40,10 +40,11 @@ class Scrabble
     else
       upcased = word.upcase
       split_word = upcased.split(//)
-      split_word.each do |letter|
-        score << @point_values[letter]
+      score = split_word.map do |letter|
+        @point_values[letter]
       end
-      total = double_letter.zip(score.map{|x, y| x * y} * word_multiplier
+      total_score = score.zip(double_letter).map { |x, y| x * y } * word_multiplier
     end
+    total_score.inject(:+)
   end
 end
